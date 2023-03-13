@@ -43,7 +43,9 @@ cc_binary {
         "aidl/PowerExt.cpp",
         "aidl/PowerHintSession.cpp",
         "aidl/PowerSessionManager.cpp",
+        "aidl/UClampVoter.cpp",
     ],
+    cpp_std: "gnu++20",
 }
 
 cc_library_static {
