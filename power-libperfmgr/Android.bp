@@ -35,7 +35,6 @@ cc_binary {
         "libprocessgroup",
         "libutils",
         "pixel-power-ext-V1-ndk",
-        "libprotobuf-cpp-full",
     ],
     srcs: [
         "aidl/service.cpp",
@@ -44,7 +43,9 @@ cc_binary {
         "aidl/PowerExt.cpp",
         "aidl/PowerHintSession.cpp",
         "aidl/PowerSessionManager.cpp",
+        "aidl/UClampVoter.cpp",
     ],
+    cpp_std: "gnu++20",
 }
 
 cc_library_static {
