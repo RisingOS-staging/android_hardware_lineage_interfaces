@@ -31,6 +31,7 @@
 
 using aidl::google::hardware::power::impl::pixel::Power;
 using aidl::google::hardware::power::impl::pixel::PowerExt;
+using aidl::google::hardware::power::impl::pixel::PowerHintMonitor;
 using aidl::google::hardware::power::impl::pixel::PowerSessionManager;
 using ::android::perfmgr::HintManager;
 
@@ -63,6 +64,10 @@ int main() {
     binder_status_t status = AServiceManager_addService(pw->asBinder().get(), instance.c_str());
     CHECK(status == STATUS_OK);
     LOG(INFO) << "Lineage Power HAL AIDL Service with Extension is started.";
+
+    if (HintManager::GetInstance()->GetAdpfProfile()) {
+        PowerHintMonitor::getInstance()->start();
+    }
 
     std::thread initThread([&]() {
         ::android::base::WaitForProperty(kPowerHalInitProp.data(), "1");
