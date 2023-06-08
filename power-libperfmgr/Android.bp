@@ -37,7 +37,6 @@ cc_binary {
         "pixel-power-ext-V1-ndk",
     ],
     srcs: [
-        "aidl/BackgroundWorker.cpp",
         "aidl/service.cpp",
         "aidl/InteractionHandler.cpp",
         "aidl/Power.cpp",
