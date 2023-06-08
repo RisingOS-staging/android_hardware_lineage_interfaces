@@ -44,8 +44,6 @@ cc_binary {
         "aidl/PowerHintSession.cpp",
         "aidl/PowerSessionManager.cpp",
         "aidl/UClampVoter.cpp",
-        "aidl/SessionTaskMap.cpp",
-        "aidl/SessionValueEntry.cpp",
     ],
     cpp_std: "gnu++20",
 }
