@@ -132,6 +132,9 @@ ndk::ScopedAStatus Power::isModeSupported(Mode type, bool *_aidl_return) {
     }
 
     bool supported = HintManager::GetInstance()->IsHintSupported(toString(type));
+    if (!supported && HintManager::GetInstance()->IsAdpfProfileSupported(toString(type))) {
+        supported = true;
+    }
     LOG(INFO) << "Power mode " << toString(type) << " isModeSupported: " << supported;
     *_aidl_return = supported;
     return ndk::ScopedAStatus::ok();
@@ -176,6 +179,9 @@ ndk::ScopedAStatus Power::setBoost(Boost type, int32_t durationMs) {
 
 ndk::ScopedAStatus Power::isBoostSupported(Boost type, bool *_aidl_return) {
     bool supported = HintManager::GetInstance()->IsHintSupported(toString(type));
+    if (!supported && HintManager::GetInstance()->IsAdpfProfileSupported(toString(type))) {
+        supported = true;
+    }
     LOG(INFO) << "Power boost " << toString(type) << " isBoostSupported: " << supported;
     *_aidl_return = supported;
     return ndk::ScopedAStatus::ok();
