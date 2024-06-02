@@ -144,14 +144,7 @@ Return<void> RadioConfig::setPreferredDataModem(int32_t serial, uint8_t modemId)
         radioError = RadioError::INVALID_ARGUMENTS;
     } else {
         for (uint8_t i = 0; i < radios.size(); i++) {
-            auto radio = radios[i];
-            if (radio == nullptr) {
-                LOG(ERROR) << __func__ << ": radios[" << std::to_string(i) << "] is null";
-                radioError = RadioError::INTERNAL_ERR;
-                continue;
-            }
-
-            radio->setDataAllowed(-1, i == modemId);
+            radios[i]->setDataAllowed(-1, i == modemId);
         }
     }
 
