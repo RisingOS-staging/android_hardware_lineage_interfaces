@@ -36,6 +36,7 @@ static std::vector<BacklightDevice> getBacklightDevices() {
 
 static const std::string kLedBacklightDevices[] = {
         "lcd-backlight",
+        "lcd_backlight0",
 };
 
 static std::vector<LedDevice> getBacklightLedDevices() {
